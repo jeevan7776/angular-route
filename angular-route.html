@@ -73,6 +73,9 @@
 			.when("/services",{
 				templateUrl:"services.html",
 				controller:"servicesCtrl"
+			})
+				.otherwise({
+					template:"<h4>if nany error is there then we get this message </h4>"
 			});
 		});
 
