@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>angular-route</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+<body ng-app="myApp">
+
+		<div class="container">
+			<nav  class="navbar navbar-default">
+				<div class="navbar-header">
+					<a href="#/!" class="navbar-brand">Angular js Routing</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+			<li><a href="#!home">home</a></li>
+			<li><a href="#!about">about</a></li>
+			<li><a href="#!contact">contact</a></li>
+			<li><a href="#!services">services</a></li>
+		</ul>
+		</nav>
+	</div>
+			
+			<div class="container">
+				<div class="jumbotron">
+			<ng-view></ng-view>
+		</div>
+	</div>
+
+	<h1>{{message}}</h1>
+	
+		
+
+<style type="text/css">
+	ng-view,h1 {	
+		text-transform: uppercase;
+		margin-top: 25px;
+		color: red;
+	}
+	a{
+		text-transform: uppercase;
+	}
+</style>
+<script type="text/javascript">
+	var app = angular.module("myApp",["ngRoute"]);
+
+		app.config(function($routeProvider){
+			$routeProvider
+			.when("/",{
+				templateUrl:"default.html"
+			})
+			.when("/home",{
+				templateUrl:"home.html",
+				controller:"homeCtrl",
+				controller:"jeevanCtrl"
+			})
+			.when("/about",{
+				templateUrl:"about.html",
+				controller:"aboutCtrl"
+			})
+			.when("/contact",{
+				templateUrl:"contact.html",
+				controller:"contactCtrl"
+			})
+			.when("/services",{
+				templateUrl:"services.html",
+				controller:"servicesCtrl"
+			});
+		});
+
+		app.controller("homeCtrl" ,function($scope) {
+			$scope.msg="this is home page controller";
+		});
+		app.controller("aboutCtrl" ,function($scope) {
+			$scope.msg="this is about page controller";
+		});
+		app.controller("contactCtrl" ,function($scope) {
+			$scope.msg="this is contact page controller";
+		});
+		app.controller("servicesCtrl" ,function($scope) {
+			$scope.msg="this is services page controller";
+		});
+		app.controller("jeevanCtrl",function ($scope) {
+			$scope.message="another controller";
+		});
+
+	
+</script>
+</body>
+</html>
